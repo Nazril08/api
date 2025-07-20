@@ -16,6 +16,17 @@ export default function handler(req, res) {
             {
                 url: `${req.headers['x-forwarded-proto'] || 'http'}://${req.headers.host}`
             }
+        ],
+        tags: [
+          {
+            name: 'AI',
+            description: 'Artificial Intelligence endpoints'
+          },
+          {
+            name: 'Image',
+            description: 'Image processing endpoints'
+          },
+          
         ]
       },
       // Use the absolute path for the glob pattern
