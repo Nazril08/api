@@ -19,6 +19,10 @@ export default function handler(req, res) {
         ],
         tags: [
           {
+            name: 'Upload',
+            description: 'File upload endpoints'
+          },
+          {
             name: 'AI',
             description: 'Artificial Intelligence endpoints'
           },
@@ -27,18 +31,26 @@ export default function handler(req, res) {
             description: 'AI Image generation endpoints'
           },
           {
-            name: 'Voice',
-            description: 'Voice conversion endpoints'
-          },
-          {
             name: 'Download',
             description: 'File and media downloaders'
           },
           {
+            name: 'Voice',
+            description: 'Voice conversion endpoints'
+          },
+          {
+            name: 'Video',
+            description: 'Video generation endpoints'
+          },
+          {
+            name: 'Utilities',
+            description: 'Miscellaneous utility endpoints'
+          },
+          
+          {
             name: 'Image',
             description: 'Image processing endpoints'
           },
-          
           {
             name: 'TTS',
             description: 'Text-to-Speech endpoints'
