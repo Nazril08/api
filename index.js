@@ -1,12 +1,17 @@
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
+import fs from 'fs';
+import path from 'path';
 import { removeBackgroundMosyne, upscaleMosyne } from './api/image/mosyne/utils.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 const serverUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : `http://localhost:${port}`;
+
+// Inject custom CSS
+const customCss = fs.readFileSync(path.resolve(process.cwd(), 'public/css/swagger-material.css'), 'utf8');
 
 // Swagger definition
 const swaggerOptions = {
@@ -32,11 +37,8 @@ const swaggerOptions = {
 };
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-// Serve static files from the 'public' directory
-app.use(express.static('public'));
-
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, {
-  customCssUrl: '/css/swagger-material.css'
+  customCss: customCss
 }));
 
 // Middleware to handle raw body for image processing
