@@ -8,12 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/api-docs.html",
-      "dest": "/public/api-docs.html"
-    },
-    {
-      "src": "/css/(.*)",
-      "dest": "/public/css/$1"
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
