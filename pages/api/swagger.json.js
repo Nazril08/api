@@ -23,10 +23,18 @@ export default function handler(req, res) {
             description: 'Artificial Intelligence endpoints'
           },
           {
+            name: 'Download',
+            description: 'File and media downloaders'
+          },
+          {
             name: 'Image',
             description: 'Image processing endpoints'
           },
           
+          {
+            name: 'TTS',
+            description: 'Text-to-Speech endpoints'
+          }
         ]
       },
       // Use the absolute path for the glob pattern
