@@ -37,7 +37,7 @@
  *       500:
  *         description: Error processing the image.
  */
-import { upscaleMosyne } from '../../../../lib/mosyne.js';
+import { upscale } from '../../../../lib/utils/mosyne.js';
 import axios from 'axios';
 
 export const config = {
@@ -102,7 +102,7 @@ export default async function handler(req, res) {
   try {
     const { output = 'image' } = req.query;
     const buffer = await streamToBuffer(req);
-    const imageUrl = await upscaleMosyne(buffer);
+    const imageUrl = await upscale(buffer);
 
     if (output === 'json') {
       return res.status(200).json({ result: imageUrl });

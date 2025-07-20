@@ -1,4 +1,4 @@
-import ttstokoh from "../../../lib/tts/ttstokoh.js";
+import { ttstokoh } from "../../../lib/tts/ttstokoh.js";
 
 /**
  * @swagger

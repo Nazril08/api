@@ -1,4 +1,4 @@
-import tiktok from "../../../lib/download/tiktok.js";
+import { ttdl } from "../../../lib/download/tiktok.js";
 
 /**
  * @swagger
@@ -37,7 +37,7 @@ export default async function handler(req, res) {
 
   try {
     const { url } = req.query;
-    const result = await tiktok(url);
+    const result = await ttdl(url);
     res.status(200).json(result);
   } catch (error) {
     const isBadRequest = /invalid url/i.test(error.message) || /valid tiktok url/i.test(error.message);
