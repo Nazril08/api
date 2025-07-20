@@ -42,6 +42,9 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Next.js build output
+.next/
+
 # Snowpack dependency directory (https://www.snowpack.dev/)
 web_modules/
 
