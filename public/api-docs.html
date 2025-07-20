@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yeyo Rest API - Documentation</title>
+  <!-- Load Swagger UI from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.17.14/swagger-ui.css" />
+  <!-- Load our custom theme -->
+  <link rel="stylesheet" href="/css/swagger-material.css" />
+</head>
+<body>
+  <div id="swagger-ui"></div>
+  <script src="https://unpkg.com/swagger-ui-dist@5.17.14/swagger-ui-bundle.js" crossorigin></script>
+  <script>
+    window.onload = () => {
+      window.ui = SwaggerUIBundle({
+        // Point to our server's new JSON endpoint
+        url: '/api/swagger.json',
+        dom_id: '#swagger-ui',
+      });
+    };
+  </script>
+</body>
+</html>

@@ -1,17 +1,11 @@
 import express from 'express';
-import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
-import fs from 'fs';
-import path from 'path';
 import { removeBackgroundMosyne, upscaleMosyne } from './api/image/mosyne/utils.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 const serverUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : `http://localhost:${port}`;
-
-// Inject custom CSS
-const customCss = fs.readFileSync(path.resolve(process.cwd(), 'public/css/swagger-material.css'), 'utf8');
 
 // Swagger definition
 const swaggerOptions = {
@@ -23,23 +17,25 @@ const swaggerOptions = {
     },
     servers: [{ url: serverUrl }],
     tags: [
-        {
-            name: 'General',
-            description: 'General endpoints'
-          },
+      {
+        name: 'General',
+        description: 'General endpoints'
+      },
       {
         name: 'Image',
         description: 'Image processing endpoints'
-      },
+      }
     ]
   },
-  apis: ['./index.js'], // Path to the API docs
+  apis: ['./index.js'],
 };
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, {
-  customCss: customCss
-}));
+// Endpoint that serves the swagger.json
+app.get('/api/swagger.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerDocs);
+});
 
 // Middleware to handle raw body for image processing
 app.use('/api/image', (req, res, next) => {
@@ -51,13 +47,12 @@ app.use('/api/image', (req, res, next) => {
   });
 });
 
-
 /**
  * @swagger
  * /:
  *   get:
  *     tags: [General]
- *     summary: Welcome message and API documentation link.
+ *     summary: API Welcome Page
  *     responses:
  *       200:
  *         description: Displays a welcome message and a link to the API docs.
@@ -65,12 +60,7 @@ app.use('/api/image', (req, res, next) => {
 app.get('/', (req, res) => {
   res.send(`
     <h1>Welcome to Yeyo Rest API</h1>
-    <p>Use the following endpoints to process your images:</p>
-    <ul>
-      <li><code>POST /api/image/mosyne/remove-background</code> - Remove background from an image.</li>
-      <li><code>POST /api/image/mosyne/upscale</code> - Upscale an image.</li>
-    </ul>
-    <p>For more detailed information, please visit the <a href="/api/docs">API Documentation</a>.</p>
+    <p>For API documentation, please visit <a href="/api-docs.html">/api-docs.html</a>.</p>
   `);
 });
 
@@ -127,7 +117,8 @@ app.post('/api/image/mosyne/upscale', async (req, res) => {
   try {
     const result = await upscaleMosyne(req.body);
     res.status(200).json({ result });
-  } catch (error) {
+  } catch (error)
+ {
     res.status(500).json({ message: error.message });
   }
 });
