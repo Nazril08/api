@@ -17,7 +17,7 @@
  *       500:
  *         description: Error processing the image.
  */
-import { removeBackgroundMosyne } from '../../../api/image/mosyne/utils.js';
+import { removeBackgroundMosyne } from '../../../../lib/mosyne.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
