@@ -1,6 +1,10 @@
 import swaggerJsdoc from 'swagger-jsdoc';
+import path from 'path';
 
 export default function handler(req, res) {
+  // Get the absolute path to the pages/api directory
+  const apiDirectory = path.resolve(process.cwd(), 'pages', 'api');
+
   const swaggerOptions = {
       definition: {
         openapi: '3.0.0',
@@ -10,12 +14,12 @@ export default function handler(req, res) {
         },
         servers: [
             {
-                // Infer server URL from request headers
                 url: `${req.headers['x-forwarded-proto'] || 'http'}://${req.headers.host}`
             }
         ]
       },
-      apis: ['./pages/api/**/*.js'],
+      // Use the absolute path for the glob pattern
+      apis: [`${apiDirectory}/**/*.js`],
     };
 
   const spec = swaggerJsdoc(swaggerOptions);
