@@ -1,9 +1,21 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import path from 'path';
+import fs from 'fs';
+import { glob } from 'glob';
 
-export default function handler(req, res) {
-  // Get the absolute path to the pages/api directory
+export default async function handler(req, res) {
   const apiDirectory = path.resolve(process.cwd(), 'pages', 'api');
+  const apiFiles = await glob(`${apiDirectory}/**/*.js`);
+
+  let totalEndpoints = 0;
+  for (const file of apiFiles) {
+      if (file.endsWith('swagger.json.js')) continue;
+      const content = fs.readFileSync(file, 'utf-8');
+      const matches = content.match(/@swagger/g);
+      if (matches) {
+          totalEndpoints += matches.length;
+      }
+  }
 
   const swaggerOptions = {
       definition: {
@@ -11,6 +23,7 @@ export default function handler(req, res) {
         info: {
           title: 'Yeyo Rest API',
           version: '1.0.0',
+          description: `Total Endpoints: ${totalEndpoints}`,
         },
         servers: [
             {
