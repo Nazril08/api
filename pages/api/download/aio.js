@@ -1,4 +1,4 @@
-import { aio } from '../../../lib/aio.js';
+import { aio } from '../../../lib/download/aio.js';
 
 /**
  * @swagger

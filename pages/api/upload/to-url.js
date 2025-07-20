@@ -25,7 +25,7 @@
  *       500:
  *         description: Error uploading the file.
  */
-import { toUrl } from '../../../lib/to-url.js';
+import { toUrl } from '../../../lib/utils/to-url.js';
 import multiparty from 'multiparty';
 import fs from 'fs';
 

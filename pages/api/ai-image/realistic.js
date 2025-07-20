@@ -40,7 +40,7 @@
  *       500:
  *         description: Error generating the image.
  */
-import { RealisticImage } from '../../../lib/realistic-image.js';
+import { RealisticImage } from '../../../lib/ai/realistic-image.js';
 import axios from 'axios';
 
 export default async function handler(req, res) {

@@ -35,7 +35,7 @@
  *       500:
  *         description: Error generating the image.
  */
-import { deepimg } from '../../../lib/deepimg.js';
+import { deepimg } from '../../../lib/ai/deepimg.js';
 import axios from 'axios';
 
 export default async function handler(req, res) {

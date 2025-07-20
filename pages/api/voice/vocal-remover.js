@@ -28,7 +28,7 @@
  *       500:
  *         description: Error processing the audio.
  */
-import { vocalRemover } from '../../../lib/vocal-remover.js';
+import { vocalRemover } from '../../../lib/voice/vocal-remover.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

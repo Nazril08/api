@@ -28,7 +28,7 @@
  *       500:
  *         description: Error generating the cards.
  */
-import { vccgenerator } from '../../../lib/vcc-generator.js';
+import { vccgenerator } from '../../../lib/utils/vcc-generator.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

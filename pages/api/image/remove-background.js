@@ -1,10 +1,10 @@
 /**
  * @swagger
- * /api/upload/uguu:
+ * /api/image/remove-background:
  *   post:
- *     tags: [Upload]
- *     summary: Upload a file to Uguu.se
- *     description: Upload any file to get a direct URL from Uguu.se.
+ *     tags: [Image]
+ *     summary: Remove the background from an image
+ *     description: Upload an image to remove its background.
  *     requestBody:
  *       required: true
  *       content:
@@ -17,15 +17,16 @@
  *                 format: binary
  *     responses:
  *       200:
- *         description: The direct URL to the uploaded file.
+ *         description: The image with the background removed.
  *         content:
- *           text/plain:
+ *           image/png:
  *             schema:
  *               type: string
+ *               format: binary
  *       500:
- *         description: Error uploading the file.
+ *         description: Error processing the image.
  */
-import { uploadUguu } from '../../../lib/utils/mosyne.js';
+import { removeBackground } from '../../../lib/image/remove-background.js';
 import multiparty from 'multiparty';
 import fs from 'fs';
 
@@ -45,7 +46,7 @@ async function parseForm(req) {
       }
       const file = files.file[0];
       const buffer = fs.readFileSync(file.path);
-      resolve({ buffer, originalFilename: file.originalFilename });
+      resolve(buffer);
     });
   });
 }
@@ -57,10 +58,11 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { buffer, originalFilename } = await parseForm(req);
-    const url = await uploadUguu(buffer, originalFilename);
+    const buffer = await parseForm(req);
+    const resultBuffer = await removeBackground(buffer);
 
-    res.status(200).send(url);
+    res.setHeader('Content-Type', 'image/png');
+    res.status(200).send(resultBuffer);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message || "An internal error occurred." });

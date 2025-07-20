@@ -35,7 +35,7 @@
  *       500:
  *         description: Error generating the image.
  */
-import { AIFreeboxImage } from '../../../lib/ai-freebox.js';
+import { AIFreeboxImage } from '../../../lib/ai/ai-freebox.js';
 import axios from 'axios';
 
 export default async function handler(req, res) {

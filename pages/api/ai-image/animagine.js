@@ -86,7 +86,7 @@
  *       500:
  *         description: Error generating the image.
  */
-import { animagine } from '../../../lib/animagine.js';
+import { animagine } from '../../../lib/ai/animagine.js';
 import axios from 'axios';
 
 export default async function handler(req, res) {

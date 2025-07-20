@@ -33,7 +33,7 @@
  *       500:
  *         description: Error processing the URL.
  */
-import { fbvdl } from '../../../lib/facebook.js';
+import { fbvdl } from '../../../lib/download/facebook.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

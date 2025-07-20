@@ -41,7 +41,7 @@
  *       500:
  *         description: Error generating the image.
  */
-import { aiart } from '../../../lib/aiart.js';
+import { aiart } from '../../../lib/ai/aiart.js';
 import axios from 'axios';
 
 export default async function handler(req, res) {

@@ -26,7 +26,7 @@
  *       500:
  *         description: Error generating the video.
  */
-import { txt2video } from '../../../lib/txt2video.js';
+import { txt2video } from '../../../lib/video/txt2video.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

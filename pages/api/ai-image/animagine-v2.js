@@ -1,10 +1,10 @@
 /**
  * @swagger
- * /api/ai-image/ai4chat:
+ * /api/ai-image/animagine-v2:
  *   get:
  *     tags: [AI Image]
- *     summary: Generate an image using AI4Chat
- *     description: Generate an image from a text prompt.
+ *     summary: Generate an anime-style image using Animagine XL v2
+ *     description: Generate an anime-style image from a text prompt and aspect ratio. This version uses polling to retrieve results.
  *     parameters:
  *       - in: query
  *         name: prompt
@@ -13,10 +13,10 @@
  *         schema:
  *           type: string
  *       - in: query
- *         name: ratio
+ *         name: aspect_ratio
  *         schema:
  *           type: string
- *           enum: ['1:1', '16:9', '2:3', '3:2', '4:5', '5:4', '9:16', '21:9', '9:21']
+ *           enum: ['1:1', '9:7', '7:9', '19:13', '13:19', '7:4', '4:7', '12:5', '5:12']
  *         description: The aspect ratio of the generated image. Defaults to '1:1'.
  *     responses:
  *       200:
@@ -29,7 +29,7 @@
  *       500:
  *         description: Error generating the image.
  */
-import { ai4chat } from '../../../lib/ai/ai4chat.js';
+import { animagineV2 } from '../../../lib/ai/animagine-v2.js';
 import axios from 'axios';
 
 export default async function handler(req, res) {
@@ -39,19 +39,23 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { prompt, ratio } = req.query;
+    const { prompt, aspect_ratio } = req.query;
     
     if (!prompt) {
       return res.status(400).json({ message: 'Prompt is required' });
     }
 
-    const imageUrl = await ai4chat(prompt, ratio);
+    const imageUrl = await animagineV2(prompt, aspect_ratio);
+
+    if (!imageUrl) {
+        return res.status(500).json({ message: 'Failed to generate image, no result URL returned.' });
+    }
 
     const response = await axios.get(imageUrl, {
       responseType: 'arraybuffer'
     });
 
-    res.setHeader('Content-Type', response.headers['content-type']);
+    res.setHeader('Content-Type', response.headers['content-type'] || 'image/png');
     res.status(200).send(response.data);
 
   } catch (error) {

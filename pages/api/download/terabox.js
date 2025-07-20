@@ -34,7 +34,7 @@
  *       500:
  *         description: Error processing the URL.
  */
-import { Terabox } from '../../../lib/terabox.js';
+import { Terabox } from '../../../lib/download/terabox.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

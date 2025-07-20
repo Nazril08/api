@@ -24,7 +24,7 @@
  *       500:
  *         description: Error upscaling the image.
  */
-import { upscale } from '../../../lib/upscale.js';
+import { upscale } from '../../../lib/image/upscale.js';
 import axios from 'axios';
 
 export default async function handler(req, res) {

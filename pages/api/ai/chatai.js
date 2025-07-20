@@ -1,4 +1,4 @@
-import { chatai } from '../../../lib/chatai.js';
+import { chatai } from '../../../lib/ai/chatai.js';
 
 /**
  * @swagger

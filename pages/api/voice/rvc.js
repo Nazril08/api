@@ -34,7 +34,7 @@
  *       500:
  *         description: Error processing the audio.
  */
-import { RVCHoloID } from '../../../lib/rvc.js';
+import { RVCHoloID } from '../../../lib/voice/rvc.js';
 import axios from 'axios';
 
 const rvc = new RVCHoloID();

@@ -1,38 +1,40 @@
 /**
  * @swagger
- * /api/download/snappin:
+ * /api/download/spotify:
  *   get:
  *     tags: [Download]
- *     summary: Download media from a Pinterest URL
- *     description: Provide a Pinterest URL to get direct download links for the media (image or video).
+ *     summary: Download a song from a Spotify URL
+ *     description: Provide a Spotify track URL to get a direct download link and song details.
  *     parameters:
  *       - in: query
  *         name: url
  *         required: true
- *         description: The Pinterest URL to process.
+ *         description: The Spotify track URL to process.
  *         schema:
  *           type: string
  *           format: uri
  *     responses:
  *       200:
- *         description: An object containing the media details and direct download links.
+ *         description: An object containing the song details and direct download link.
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 thumb:
+ *                 artist:
  *                   type: string
- *                 video:
+ *                 title:
  *                   type: string
- *                   nullable: true
+ *                 duration:
+ *                   type: string
  *                 image:
  *                   type: string
- *                   nullable: true
+ *                 download:
+ *                   type: string
  *       500:
  *         description: Error processing the URL.
  */
-import { snappinDownload } from '../../../lib/download/snappin.js';
+import { spotifyDownload } from '../../../lib/download/spotify.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -47,7 +49,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ message: 'URL parameter is required.' });
     }
 
-    const result = await snappinDownload(url);
+    const result = await spotifyDownload(url);
 
     res.status(200).json(result);
   } catch (error) {

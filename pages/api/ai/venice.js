@@ -1,4 +1,4 @@
-import venicechat from '../../../lib/venice.js';
+import venicechat from '../../../lib/ai/venice.js';
 
 /**
  * @swagger

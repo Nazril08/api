@@ -32,7 +32,7 @@
  *       500:
  *         description: Error generating the card.
  */
-import { ccgenerator } from '../../../lib/cc-generator.js';
+import { ccgenerator } from '../../../lib/utils/cc-generator.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

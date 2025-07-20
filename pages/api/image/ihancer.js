@@ -36,7 +36,7 @@
  *       500:
  *         description: Error processing the image.
  */
-import { ihancer } from '../../../lib/ihancer.js';
+import { ihancer } from '../../../lib/image/ihancer.js';
 
 export const config = {
   api: {

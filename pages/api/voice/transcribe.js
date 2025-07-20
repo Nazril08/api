@@ -28,7 +28,7 @@
  *       500:
  *         description: Error processing the audio.
  */
-import { transcribe } from '../../../lib/transcribe.js';
+import { transcribe } from '../../../lib/voice/transcribe.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

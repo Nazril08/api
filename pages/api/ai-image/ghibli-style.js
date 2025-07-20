@@ -29,7 +29,7 @@
  *       500:
  *         description: Error generating the image.
  */
-import { GhibliGenerator } from '../../../lib/ghibli-image.js';
+import { GhibliGenerator } from '../../../lib/ai/ghibli-image.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
