@@ -23,6 +23,14 @@ export default function handler(req, res) {
             description: 'Artificial Intelligence endpoints'
           },
           {
+            name: 'AI Image',
+            description: 'AI Image generation endpoints'
+          },
+          {
+            name: 'Voice',
+            description: 'Voice conversion endpoints'
+          },
+          {
             name: 'Download',
             description: 'File and media downloaders'
           },

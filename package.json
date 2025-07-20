@@ -16,6 +16,9 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-react": "^5.17.14"
+    "swagger-ui-react": "^5.17.14",
+    "user-agents": "^1.1.605",
+    "uuid": "^11.1.0",
+    "ws": "^8.18.3"
   }
 }
