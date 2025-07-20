@@ -37,7 +37,7 @@
  *       500:
  *         description: Error processing the image.
  */
-import { removeBackground } from '../../../../lib/utils/mosyne.js';
+import { removeBackgroundMosyne } from '../../../../lib/utils/mosyne.js';
 import axios from 'axios';
 
 export const config = {
@@ -101,7 +101,7 @@ export default async function handler(req, res) {
   try {
     const { output = 'image' } = req.query;
     const buffer = await streamToBuffer(req);
-    const imageUrl = await removeBackground(buffer);
+    const imageUrl = await removeBackgroundMosyne(buffer);
 
     if (output === 'json') {
       return res.status(200).json({ result: imageUrl });
