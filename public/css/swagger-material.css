@@ -1722,3 +1722,83 @@
 .swagger-ui .topbar {
   display: none;
 }
+
+/* Font modern */
+body, .swagger-ui, .swagger-ui * {
+  font-family: 'Inter', 'Nunito', 'Roboto', Arial, sans-serif !important;
+}
+
+/* Soft background */
+.swagger-ui {
+  background: #f7f8fa !important;
+}
+
+/* Card endpoint lebih membulat dan shadow halus */
+.opblock {
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 18px !important;
+}
+
+/* Header API title */
+.topbar, .swagger-ui .topbar {
+  background: #fff !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+}
+
+.swagger-ui .info {
+  margin-bottom: 24px !important;
+}
+
+/* Tombol lebih halus */
+.swagger-ui .btn {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  background: #2563eb !important;
+  color: #fff !important;
+  border: none !important;
+  transition: background 0.2s;
+}
+.swagger-ui .btn:hover {
+  background: #1d4ed8 !important;
+}
+
+/* Input lebih clean */
+.swagger-ui input, .swagger-ui textarea, .swagger-ui select {
+  border-radius: 8px !important;
+  border: 1px solid #d1d5db !important;
+  padding: 8px 12px !important;
+  font-size: 15px !important;
+}
+
+/* Section tag title */
+.opblock-tag {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: #22223b !important;
+  letter-spacing: 0.01em;
+}
+
+/* Section description */
+.opblock-tag-section .markdown p {
+  color: #6b7280 !important;
+  font-size: 1rem !important;
+}
+
+/* Hide topbar logo */
+.topbar-wrapper img[alt="Swagger UI"], .topbar-wrapper span {
+  display: none !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .swagger-ui .info {
+    padding: 0 8px !important;
+  }
+  .opblock {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
