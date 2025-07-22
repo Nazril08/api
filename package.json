@@ -12,8 +12,7 @@
   "dependencies": {
     "@rynn-k/proxy-agent": "^1.0.4",
     "axios": "^1.6.0",
-    "cheerio": "^1.1.0",
-    "crypto-js": "^4.2.0",
+    "cheerio": "^1.1.2",
     "form-data": "^4.0.0",
     "multiparty": "^4.2.3",
     "next": "^14.2.4",
