@@ -1,10 +1,10 @@
 /**
  * @swagger
- * /api/voice/vocal-remover:
+ * /api/audio/vocal-remover:
  *   get:
- *     tags: [Voice]
+ *     tags: [Audio]
  *     summary: Remove vocals from a song
- *     description: Provide a URL to an audio file to separate the vocals from the instrumental.
+ *     description: Provide a URL to a song to remove its vocals.
  *     parameters:
  *       - in: query
  *         name: url
@@ -28,7 +28,7 @@
  *       500:
  *         description: Error processing the audio.
  */
-import { vocalRemover } from '../../../lib/voice/vocal-remover.js';
+import { vocalRemover } from '../../../lib/audio/vocal-remover.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

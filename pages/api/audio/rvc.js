@@ -1,10 +1,10 @@
 /**
  * @swagger
- * /api/voice/rvc:
+ * /api/audio/rvc:
  *   get:
- *     tags: [Voice]
+ *     tags: [Audio]
  *     summary: Convert voice using RVC models from a URL
- *     description: Provide a URL to an audio file to convert its voice using various HoloID RVC models.
+ *     description: Takes a URL to an audio file and processes it with a specified RVC model.
  *     parameters:
  *       - in: query
  *         name: url
@@ -34,10 +34,8 @@
  *       500:
  *         description: Error processing the audio.
  */
-import { RVCHoloID } from '../../../lib/voice/rvc.js';
+import { rvc } from '../../../lib/audio/rvc.js';
 import axios from 'axios';
-
-const rvc = new RVCHoloID();
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -52,7 +50,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ message: 'URL parameter is required' });
     }
 
-    const audioUrl = await rvc.process(url, {
+    const audioUrl = await rvc(url, {
         model,
         transpose: transpose ? parseInt(transpose) : undefined
     });

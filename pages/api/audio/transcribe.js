@@ -1,10 +1,10 @@
 /**
  * @swagger
- * /api/voice/transcribe:
+ * /api/audio/transcribe:
  *   get:
- *     tags: [Voice]
+ *     tags: [Audio]
  *     summary: Transcribe an audio file from a URL
- *     description: Provide a URL to an audio file to transcribe it into text.
+ *     description: Takes a URL to an audio file and returns the transcribed text.
  *     parameters:
  *       - in: query
  *         name: url
@@ -28,7 +28,7 @@
  *       500:
  *         description: Error processing the audio.
  */
-import { transcribe } from '../../../lib/voice/transcribe.js';
+import { transcribe } from '../../../lib/audio/transcribe.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
