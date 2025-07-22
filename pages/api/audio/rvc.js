@@ -34,8 +34,10 @@
  *       500:
  *         description: Error processing the audio.
  */
-import { rvc } from '../../../lib/audio/rvc.js';
+import { RVCHoloID } from '../../../lib/audio/rvc.js';
 import axios from 'axios';
+
+const rvcProcessor = new RVCHoloID();
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -50,7 +52,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ message: 'URL parameter is required' });
     }
 
-    const audioUrl = await rvc(url, {
+    const audioUrl = await rvcProcessor.process(url, {
         model,
         transpose: transpose ? parseInt(transpose) : undefined
     });
