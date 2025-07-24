@@ -22,9 +22,28 @@ import { summarizeYoutubeVideo } from '../../../lib/ai-experience/yt-summarize.j
  *             schema:
  *               type: object
  *               properties:
+ *                 title:
+ *                   type: string
+ *                   description: The title of the YouTube video.
+ *                 channel:
+ *                   type: string
+ *                   description: The name of the YouTube channel.
+ *                 duration:
+ *                   type: string
+ *                   description: The duration of the video.
  *                 summary:
  *                   type: string
  *                   description: The summarized text of the video.
+ *                 keyPoints:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       point:
+ *                         type: string
+ *                       summary:
+ *                         type: string
+ *                   description: An array of key points from the video.
  *       400:
  *         description: Bad Request, usually due to a missing or invalid URL.
  *       500:
