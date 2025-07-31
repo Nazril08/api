@@ -7,6 +7,7 @@ export function middleware(request) {
   const allowedOrigins = [
     'https://snap.nzr.web.id',
     'http://localhost:3000',
+    'http://localhost:1420'
   ];
 
   const isOriginAllowed = allowedOrigins.includes(origin);
