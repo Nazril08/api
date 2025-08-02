@@ -27,6 +27,10 @@ export default function handler(req, res) {
             description: 'Artificial Intelligence endpoints'
           },
           {
+            name: 'AI Experience',
+            description: 'AI-powered experience and content analysis endpoints'
+          },
+          {
             name: 'AI Image',
             description: 'AI Image generation endpoints'
           },
