@@ -44,7 +44,7 @@ export default function handler(req, res) {
           },
           {
             name: 'Video',
-            description: 'Video generation endpoints'
+            description: 'Video generation and processing endpoints'
           },
           {
             name: 'Utilities',
